@@ -1,0 +1,8 @@
+{
+  "name": "guilib",
+  "version": "1.0.1",
+  "description": "GUILib for featherframe",
+  "main": "index.js",
+  "author": "FishingHacks",
+  "license": "MIT"
+}
