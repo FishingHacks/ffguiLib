@@ -19,7 +19,7 @@ export default async function StyleProvider({ mode, style }, children) {
         ? [
             "#f9f9f9",
             "#f7f7f7",
-            "#f9fafb",
+            "#f9fafa",
             "#f3f4f6",
             "#e5e7eb",
             "#d1d5db",
@@ -162,6 +162,46 @@ export default async function StyleProvider({ mode, style }, children) {
       .GUILibButton:focus,
       .GUILibButton:active {
         background-color: var(--bga);
-      }</style>
+      }
+      
+      input.guilibcheckbox {
+        width: 41px;
+        height: 21px;
+        cursor: pointer;
+        display: flex;
+        border-radius: 50px;
+        appearance: none;
+        border: 1px #444 solid;
+        background-color: ${style.background[8]};
+      }
+      
+      input.guilibcheckbox::before {
+        content: "";
+        border-radius: 50%;
+        background-color: ${style.text[0]};
+        width: 15px;
+        height: 15px;
+        transform: translate(2px, 2px);
+      }
+      
+      input.guilibcheckbox:checked::before {
+        transform: translate(22px, 2px);
+      }
+      
+      input.guilibcheckbox:checked {
+        background-color: var(--color);
+        border: 1px var(--color) solid;
+      }
+
+      input.guilibcheckbox.disabled,
+      input.guilibcheckbox.disabled:checked {
+        background-color: ${style.background[8]}
+      }
+
+      input.guilibcheckbox.disabled::before,
+      input.guilibcheckbox.disabled:checked::before {
+        background-color: ${style.background[5]}
+      }
+      </style>
       ${children}`;
 }

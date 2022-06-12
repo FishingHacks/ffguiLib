@@ -1,7 +1,7 @@
 import {html, useContext} from "/framework"
 
 export default function Button({cls, radius, disabled, compact, upperCase, variant, color, style, ...props}, children) {
-    cls = cls || [];
+    cls = (cls || "").split(" ");
     cls = [...cls, "GUILibButton"];
 
     let theme = useContext("selectedColorTheme")?.style;
