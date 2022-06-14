@@ -21,13 +21,55 @@ export default function notification(props, children) {
   if (typeof timeout == "string") timeout = Number(timeout);
   timeout = timeout || 10000;
   calledfromctx = calledfromctx || false;
-  icon = icon || undefined;
   close = close == false ? false : true;
 
   if (!id) calledfromctx = false;
 
   if (!calledfromctx && !onClose) {
     timeout = -1;
+  }
+
+  switch (icon) {
+    case "checkmark":
+    case "complete":
+      icon = html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M18.047,4,22,8.325,9.3,20,2,12.68,6.136,8.533,9.474,11.88Z"
+        />
+      </svg>`;
+      break;
+    default:
+      icon = icon || undefined;
+  }
+
+  if (!close) {
+    icon = html`<svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      x="0px"
+      y="0px"
+      width="40px"
+      height="40px"
+      viewBox="0 0 50 50"
+      style="enable-background:new 0 0 50 50;"
+      xml:space="preserve"
+    >
+      <path
+        fill="currentColor"
+        d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"
+      >
+        <animateTransform
+          attributeType="xml"
+          attributeName="transform"
+          type="rotate"
+          from="0 25 25"
+          to="360 25 25"
+          dur="0.6s"
+          repeatCount="indefinite"
+        ></animateTransform>
+      </path>
+    </svg>`;
   }
 
   switch (color) {
@@ -95,7 +137,7 @@ export default function notification(props, children) {
     );
 
   if (typeof style == "function")
-    style = style(useContext("selectedColorTheme").style);
+    style = style(useContext("selectedColorTheme")?.style);
 
   return html`
     <div
@@ -104,7 +146,22 @@ export default function notification(props, children) {
       ...${style ? { style: style } : {}}
       ...${other}
     >
-      ${icon ? html`<div class="icon">${icon}</div>` : []}
+      ${icon
+        ? html`<div
+            class="icon"
+            style="--currentColor: ${useContext("selectedColorTheme")?.style
+              ? useContext("selectedColorTheme")?.style[color][5]
+              : color == "orange"
+              ? "#f08c00"
+              : color == "green"
+              ? "#048304"
+              : color == "purple"
+              ? "#891aa5"
+              : color}; --color: var(--currentColor); --col: var(--color); --curcol: var(--col); color: var(--col); fill: var(--col);"
+          >
+            ${icon}
+          </div>`
+        : []}
       <div class="body">
         <div class="title">${title}</div>
         <div class="content">

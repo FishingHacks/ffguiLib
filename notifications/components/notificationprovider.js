@@ -138,27 +138,27 @@ export default function NotificationProvider(props, children) {
       }
 
       .notification.blue::before {
-        background-color: #00f;
+        background-color: ${theme?theme.blue[5]:"#00f"};
       }
 
       .notification.red::before {
-        background-color: #f00;
+        background-color: ${theme?theme.red[5]:"#f00"};
       }
 
       .notification.yellow::before {
-        background-color: #fe0;
+        background-color: ${theme?theme.yellow[5]:"#fe0"};
       }
 
       .notification.orange::before {
-        background-color: #f08c00;
+        background-color: ${theme?theme.orange[5]:"#f08c00"};
       }
 
       .notification.green::before {
-        background-color: #048304;
+        background-color: ${theme?theme.red[5]:"#048304"};
       }
 
       .notification.purple::before {
-        background-color: #891aa5;
+        background-color: ${theme?theme.red[5]:"#891aa5"};
       }
 
       .notification.icon::before {
