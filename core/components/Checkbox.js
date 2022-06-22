@@ -9,7 +9,7 @@ export default function Checkbox(
   disabled = disabled || false;
   if (disabled == "false") disabled = false;
 
-  cls = (cls || "").split(" ");
+  if (cls instanceof Array) cls = cls; else cls = (cls || "").split(" ");
   cls.push("guilibcheckbox");
   if (disabled) cls.push("disabled");
 

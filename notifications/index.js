@@ -14,4 +14,4 @@ function updateNotification({
   useContext("notificationProvider")({type: "EDIT_NOTIFICATION", payload: {id, editedObject: payload}})
 }
 
-export { notification as Notification, NotificationProvider, useNotification, updateNotification };
+export { notification, NotificationProvider, useNotification, updateNotification };
