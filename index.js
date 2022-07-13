@@ -1,4 +1,4 @@
-import { StyleProvider, Button, Checkbox } from "./core/index.js"
+import { StyleProvider, Button, Checkbox, Input } from "./core/index.js"
 import { notification, NotificationProvider, updateNotification, useNotification } from "./notifications/index.js"
 
 export {
@@ -8,5 +8,6 @@ export {
     updateNotification,
     useNotification,
     Button,
-    Checkbox
+    Checkbox,
+    Input
 };

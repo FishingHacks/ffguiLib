@@ -9,7 +9,8 @@ export default function Checkbox(
   disabled = disabled || false;
   if (disabled == "false") disabled = false;
 
-  if (cls instanceof Array) cls = cls; else cls = (cls || "").split(" ");
+  if (cls instanceof Array) cls = cls;
+  else cls = (cls || "").split(" ");
   cls.push("guilibcheckbox");
   if (disabled) cls.push("disabled");
 
@@ -30,10 +31,10 @@ export default function Checkbox(
   if (checked == "false") checked = false;
 
   return html`
-  <input type="checkbox" ...${
-    checked ? { checked: "" } : {}
-  } style=${style} class=${cls.join(" ")} ...${
-    disabled ? { onchange: ({ event: e }) => e.target.checked = !e.target.checked } : {}
+  <input type="checkbox" checked=${checked} style=${style} class=${cls.join(
+    " "
+  )} onchange=${
+    disabled ? (e) => (e.target.checked = !e.target.checked) : null
   } ...${other}>${children}</input>
   `;
 }
