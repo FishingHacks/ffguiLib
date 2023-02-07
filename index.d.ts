@@ -14,8 +14,8 @@ declare function Notification (
   props: {
     title: string;
     content: string;
-    color: "blue" | "red" | "orange" | "green" | "yellow" | "purple" = "blue";
-    timeout: number = 1000;
+    color?: "blue" | "red" | "orange" | "green" | "yellow" | "purple";
+    timeout?: number;
     calledfromctx?: boolean;
     onClose?: (n: Notification) => void;
     onOpen?: (n: Notification) => void;
@@ -33,8 +33,8 @@ declare function NotificationProvider (props: {}, childs: Array<any | string>): 
 declare function useNotification (payload: {
   title: string;
   content: string;
-  color: "blue" | "red" | "orange" | "green" | "yellow" | "purple" = "blue";
-  timeout: number = 1000;
+  color?: "blue" | "red" | "orange" | "green" | "yellow" | "purple";
+  timeout?: number;
   calledfromctx?: boolean;
   onClose?: (n: Notification) => void;
   onOpen?: (n: Notification) => void;
@@ -50,8 +50,8 @@ declare function updateNotification (payload: {
   payload: {
     title: string;
     content: string;
-    color: "blue" | "red" | "orange" | "green" | "yellow" | "purple" = "blue";
-    timeout: number = 1000;
+    color?: "blue" | "red" | "orange" | "green" | "yellow" | "purple";
+    timeout?: number;
     calledfromctx?: boolean;
     onClose?: (n: Notification) => void;
     onOpen?: (n: Notification) => void;
@@ -88,12 +88,12 @@ type radius =
 declare function Button (
   props: {
     cls?: string | Array<string>;
-    radius?: radius = "4px";
+    radius?: radius;
     disabled?: boolean;
     compact?: boolean;
     upperCase?: boolean;
-    variant?: "light" | "outline" | "subtle" | "filled" = "filled";
-    color?: "blue" | "red" | "orange" | "green" | "yellow" | "purple" = "blue";
+    variant?: "light" | "outline" | "subtle" | "filled";
+    color?: "blue" | "red" | "orange" | "green" | "yellow" | "purple";
     style: Style;
     [name: string]: any;
   },
@@ -102,8 +102,19 @@ declare function Button (
 
 declare function Checkbox (
   props: {
-    color?: "blue" | "red" | "orange" | "green" | "yellow" | "purple" = "blue";
+    color?: "blue" | "red" | "orange" | "green" | "yellow" | "purple";
     checked?: boolean;
+    cls?: string | Array<string>;
+    disabled?: boolean;
+    [name: string]: any;
+  },
+  children: Array<any | string>
+): void;
+
+declare function Input (
+  props: {
+    color?: "blue" | "red" | "orange" | "green" | "yellow" | "purple";
+    type?: string;
     cls?: string | Array<string>;
     disabled?: boolean;
     [name: string]: any;
@@ -118,5 +129,6 @@ export {
   updateNotification,
   StyleProvider,
   Button,
-  Checkbox
+  Checkbox,
+  Input
 };
